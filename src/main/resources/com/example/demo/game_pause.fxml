@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <ImageView fitHeight="86.0" fitWidth="81.0" layoutX="309.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/play.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="73.0" fitWidth="106.0" layoutX="52.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/cloud.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="86.0" fitWidth="139.0" layoutX="494.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/cloud.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="54.0" fitWidth="72.0" layoutX="86.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/hero.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="46.0" fitWidth="51.0" layoutX="27.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/close.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="54.0" fitWidth="51.0" layoutX="324.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/load_game.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="86.0" fitWidth="98.0" layoutX="71.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/floating_island_3_full.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="93.0" fitWidth="44.0" layoutX="472.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/green_orc.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="69.0" fitWidth="256.0" layoutX="424.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/final_floating_island.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="74.0" fitWidth="44.0" layoutX="582.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/red_orc.png" />
+            </image>
+        </ImageView>
+        <Label contentDisplay="CENTER" layoutX="308.0" layoutY="316.0" prefHeight="46.0" prefWidth="91.0" text="SAVE GAME" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <font>
+                <Font name="Berlin Sans FB Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label contentDisplay="CENTER" graphicTextGap="1.0" layoutX="297.0" layoutY="177.0" prefHeight="69.0" prefWidth="106.0" text="RESUME GAME" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <font>
+                <Font name="Berlin Sans FB Bold" size="20.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

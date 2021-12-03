@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="61.0" fitWidth="134.0" layoutX="47.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/floating_island_2_full.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="86.0" fitWidth="120.0" layoutX="340.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/floating_island_1_full.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="562.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="45.0" fitWidth="40.0" layoutX="11.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/knives_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="45.0" fitWidth="40.0" layoutX="71.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/sword_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="160.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/knives.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="40.0" layoutX="340.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/pause_game.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="73.0" fitWidth="106.0" layoutX="49.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/cloud.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="73.0" fitWidth="106.0" layoutX="476.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/cloud.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="52.0" fitWidth="50.0" layoutX="371.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/green_orc.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="86.0" fitWidth="120.0" layoutX="500.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/floating_island_1_full.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="85.0" fitWidth="40.0" layoutX="562.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/tnt.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="52.0" fitWidth="65.0" layoutX="79.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/hero.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="600.0" layoutY="6.0" prefHeight="32.0" prefWidth="40.0" text="15" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="24.0" />
+         </font>
+      </Label>
+      <BorderPane layoutX="71.0" layoutY="326.0" prefHeight="39.0" prefWidth="40.0" style="-fx-border-color: black; -fx-border-width: 4px;" />
+      <BorderPane layoutX="11.0" layoutY="327.0" prefHeight="39.0" prefWidth="40.0" style="-fx-border-color: grey; -fx-border-width: 3px;" />
+      <Label layoutX="338.0" layoutY="-3.0" prefHeight="51.0" prefWidth="65.0" text="50" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="40.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView disable="true" fitHeight="150.0" fitWidth="200.0" layoutX="240.0" layoutY="26.0" nodeOrientation="INHERIT" preserveRatio="true" smooth="false" style="-fx-cursor: pointer;">
+      <ImageView disable="true" fitHeight="150.0" fitWidth="200.0" layoutX="241.0" layoutY="26.0" nodeOrientation="INHERIT" preserveRatio="true" smooth="false" style="-fx-cursor: pointer;">
          <image>
-            <Image url="@../../../assets/Images/game name.png" />
+            <Image url="@../../../assets/Images/game_name.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="86.0" fitWidth="81.0" layoutX="300.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="86.0" fitWidth="81.0" layoutX="300.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/Images/play.png" />
          </image>
@@ -31,40 +33,50 @@
             <Image url="@../../../assets/Images/hero.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="46.0" fitWidth="51.0" layoutX="225.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="46.0" fitWidth="51.0" layoutX="223.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/Images/close.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="54.0" fitWidth="51.0" layoutX="315.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../assets/Images/Load%20game.png" />
+            <Image url="@../../../assets/Images/load_game.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="86.0" fitWidth="98.0" layoutX="71.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../assets/Images/floating%20island%203%20full.png" />
+            <Image url="@../../../assets/Images/floating_island_3_full.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="51.0" layoutX="408.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="47.0" fitWidth="51.0" layoutX="405.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/Images/leaderboard.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="93.0" fitWidth="44.0" layoutX="472.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../assets/Images/green%20orc.png" />
+            <Image url="@../../../assets/Images/green_orc.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="69.0" fitWidth="256.0" layoutX="424.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../assets/Images/final%20floating%20island.png" />
+            <Image url="@../../../assets/Images/final_floating_island.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="74.0" fitWidth="44.0" layoutX="582.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../assets/Images/red%20orc.png" />
+            <Image url="@../../../assets/Images/red_orc.png" />
          </image>
       </ImageView>
+      <Label contentDisplay="CENTER" layoutX="307.0" layoutY="341.0" prefHeight="32.0" prefWidth="81.0" text="LOAD GAME" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label contentDisplay="CENTER" graphicTextGap="1.0" layoutX="299.0" layoutY="149.0" prefHeight="32.0" prefWidth="81.0" text="NEW GAME" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
