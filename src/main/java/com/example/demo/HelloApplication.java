@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
 
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
 
-        stage.setTitle("Will Hero");
+        stage.setTitle("Will Hero - Home Screen");
         stage.getIcons().add(new Image("file:///D:/My Files/ARS@IIITD/Academics/Year 2/Sem3/AP/AP Project/Will Hero/refer/Images/boss orc.png"));
         stage.setResizable(false);
 

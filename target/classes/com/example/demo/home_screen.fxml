@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
    <children>
       <ImageView disable="true" fitHeight="150.0" fitWidth="200.0" layoutX="241.0" layoutY="26.0" nodeOrientation="INHERIT" preserveRatio="true" smooth="false" style="-fx-cursor: pointer;">
          <image>
@@ -78,5 +79,6 @@
             <Font name="Berlin Sans FB Bold" size="14.0" />
          </font>
       </Label>
+      <Button fx:id="btn_screen_1" layoutX="614.0" layoutY="341.0" mnemonicParsing="false" onAction="#show_screen_2" text="Next" />
    </children>
 </AnchorPane>
