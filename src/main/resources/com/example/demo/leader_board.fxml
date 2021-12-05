@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,11 +15,6 @@
             <Image url="@../../../assets/Images/leaderboard_text.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="51.0" fitWidth="49.0" layoutX="14.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/Images/close.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="118.0" fitWidth="163.0" layoutX="46.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/Images/cloud.png" />
@@ -29,7 +25,7 @@
             <Image url="@../../../assets/Images/cloud.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="67.0" fitWidth="136.0" layoutX="310.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="crownBtnLeaderBoard" fitHeight="67.0" fitWidth="136.0" layoutX="310.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/Images/Crown.png" />
          </image>
@@ -44,6 +40,17 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="btn_screen_2" layoutX="624.0" layoutY="343.0" mnemonicParsing="false" onAction="#show_screen_3" text="Next" />
+      <Button fx:id="closeBtnLeaderBoard" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="316.0" mnemonicParsing="false" onAction="#clicked_close_btn_leader_board" prefHeight="46.0" prefWidth="37.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="46.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/Images/close.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

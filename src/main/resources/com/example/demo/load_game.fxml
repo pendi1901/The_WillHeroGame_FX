@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,11 +11,12 @@
 
 <AnchorPane prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
     <children>
-        <ImageView fitHeight="51.0" fitWidth="49.0" layoutX="14.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../assets/Images/close.png" />
-            </image>
-        </ImageView>
+      <ImageView fitHeight="106.0" fitWidth="198.0" layoutX="254.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/saved_games.png" />
+         </image>
+      </ImageView>
+      <BorderPane layoutX="251.0" layoutY="19.0" prefHeight="117.0" prefWidth="187.0" style="-fx-border-color: white; -fx-border-width: 5px;" />
         <ImageView fitHeight="118.0" fitWidth="163.0" layoutX="46.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../assets/Images/cloud.png" />
@@ -36,12 +38,17 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-      <ImageView fitHeight="106.0" fitWidth="198.0" layoutX="254.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/Images/saved_games.png" />
-         </image>
-      </ImageView>
-      <BorderPane layoutX="251.0" layoutY="19.0" prefHeight="117.0" prefWidth="187.0" style="-fx-border-color: white; -fx-border-width: 5px;" />
-      <Button fx:id="btn_screen_3" layoutX="625.0" layoutY="343.0" mnemonicParsing="false" onAction="#show_screen_4" text="Next" />
+      <Button fx:id="closeBtnLoadGame" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="316.0" mnemonicParsing="false" onAction="#clicked_close_btn_load_game" prefHeight="46.0" prefWidth="37.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="46.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/Images/close.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
     </children>
 </AnchorPane>

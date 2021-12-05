@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -9,6 +10,16 @@
 
 <AnchorPane prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
     <children>
+        <ImageView fx:id="heroHome" fitHeight="49.0" fitWidth="70.0" layoutX="93.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/hero.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="greenOrcHome" fitHeight="49.0" fitWidth="44.0" layoutX="532.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/green_orc.png" />
+            </image>
+        </ImageView>
         <ImageView fitHeight="76.0" fitWidth="112.0" layoutX="504.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../assets/Images/floating_island_3_full.png" />
@@ -24,24 +35,14 @@
                 <Image url="@../../../assets/Images/score.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="68.0" fitWidth="217.0" layoutX="232.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="68.0" fitWidth="217.0" layoutX="232.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../assets/Images/result_text.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="62.0" fitWidth="66.0" layoutX="307.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="68.0" fitWidth="217.0" layoutX="232.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../assets/Images/go_to_home.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="49.0" fitWidth="59.0" layoutX="95.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../assets/Images/hero.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="49.0" fitWidth="44.0" layoutX="539.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../assets/Images/red_orc.png" />
+                <Image url="@../../../assets/Images/result_text.png" />
             </image>
         </ImageView>
         <Label contentDisplay="CENTER" graphicTextGap="1.0" layoutX="333.0" layoutY="148.0" prefHeight="32.0" prefWidth="51.0" text="50" textAlignment="CENTER" textFill="WHITE" wrapText="true">
@@ -59,11 +60,17 @@
                 <Font name="Berlin Sans FB Bold" size="16.0" />
             </font>
         </Label>
-        <ImageView fitHeight="68.0" fitWidth="217.0" layoutX="232.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../assets/Images/result_text.png" />
-            </image>
-        </ImageView>
-      <Button fx:id="btn_screen_7" layoutX="615.0" layoutY="339.0" mnemonicParsing="false" onAction="#show_screen_1" text="Next" />
+      <Button fx:id="homeBtnGameResult" alignment="CENTER" contentDisplay="CENTER" layoutX="305.0" layoutY="287.0" mnemonicParsing="false" onAction="#clicked_home_btn_game_result" prefHeight="46.0" prefWidth="37.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/Images/go_to_home.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
     </children>
 </AnchorPane>
