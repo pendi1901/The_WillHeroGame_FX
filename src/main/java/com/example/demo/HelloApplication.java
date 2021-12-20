@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class HelloApplication extends Application {
     @Override
@@ -35,11 +36,11 @@ public class HelloApplication extends Application {
 
         stage.setOnCloseRequest(event -> {
             event.consume();
-            exit_game(stage);
+            exitGame(stage);
         });
     }
 
-    public void exit_game(Stage stage){
+    public void exitGame(Stage stage){
         Alert myAlert = new Alert(Alert.AlertType.CONFIRMATION);
         myAlert.setTitle("Confirmation Prompt");
         myAlert.setHeaderText("Exit Game");

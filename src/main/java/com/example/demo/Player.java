@@ -1,41 +1,46 @@
 package com.example.demo;
 
-import java.io.Serializable;
-
-public class Player implements Serializable {
-    //need to add helmet and hero attributes
-    private int points;
-    private int coins;
-    private int highscore;
-    private String name;
+public class Player extends GameObject{
+    private Hero myHero;
+    private int pointsScored;
+    private int coinsCollected;
+    private String myName;
 
     Player(String name){
-        this.points = 0;
-        this.highscore=0;
-        this.coins=0;
-        this.name = name;
+        this.myHero = new Hero();
+        this.pointsScored = 0;
+        this.coinsCollected = 0;
+        this.myName = name;
     }
-    //need to add helmet and hero getters and a player method
-    public void setPoints(int points){
-        this.points = points;
-        highscore =Math.max(points , highscore);
+
+    public Hero getHero() {
+        return myHero;
     }
     public int getPoints(){
-        return this.points;
-    }
-    public void setCoins(int coins){
-        this.coins = coins;
+        return this.pointsScored;
     }
     public int getCoins(){
-        return this.coins;
-
+        return this.coinsCollected;
+    }
+    public String getName(){
+        return this.myName;
+    }
+    public void setPoints(int points){
+        this.pointsScored = points;
+    }
+    public void setCoins(int coinsCollected) {
+        this.coinsCollected = coinsCollected;
     }
     public void setName(String name){
-        this.name = name;
-    }
-    public String  getName(){
-        return this.name;
+        this.myName = name;
     }
 
+    @Override
+    public void display() {
 
+    }
+    @Override
+    public void hide() {
+
+    }
 }
