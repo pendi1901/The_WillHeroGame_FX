@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
+<AnchorPane prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoadGameController">
     <children>
       <ImageView fitHeight="106.0" fitWidth="198.0" layoutX="254.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>

@@ -16,22 +16,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
-//    ---------------------------------------- Animations ------------------------------------------
+public class GamePlayController implements Initializable {
+    private GameMain myGame = GameMain.getInstance();
+
+    //    ---------------------------------------- Animations ------------------------------------------
     @FXML
     ImageView heroHome;
     @FXML
     ImageView greenOrcHome;
     @FXML
     ImageView redOrcHome;
-    @FXML
-    Button playBtnHome;
-    @FXML
-    ImageView crownBtnLeaderBoard;
-    @FXML
-    Button closeBtnLoadGame;
-    @FXML
-    Button closeBtnLeaderBoard;
     @FXML
     Button pauseBtnGamePlay;
     @FXML
@@ -42,8 +36,7 @@ public class HelloController implements Initializable {
     Button playBtnPauseGame;
     @FXML
     Button reviveBtnGameOver;
-    @FXML
-    Button homeBtnGameResult;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,54 +71,6 @@ public class HelloController implements Initializable {
             translateROrc.setByY(-50);
             translateROrc.setAutoReverse(true);
             translateROrc.play();
-        }
-//        Play Btn Home
-        {
-            ScaleTransition scalePlayBtnHome = new ScaleTransition();
-            scalePlayBtnHome.setNode(playBtnHome);
-            scalePlayBtnHome.setDuration(Duration.millis(500));
-            scalePlayBtnHome.setCycleCount(ScaleTransition.INDEFINITE);
-            scalePlayBtnHome.setByX(0.12);
-            scalePlayBtnHome.setByY(0.12);
-            scalePlayBtnHome.setInterpolator(Interpolator.LINEAR);
-            scalePlayBtnHome.setAutoReverse(true);
-            scalePlayBtnHome.play();
-        }
-//        Crown Img Leaderboard
-        {
-            ScaleTransition scaleCrownBtnLeaderBoard = new ScaleTransition();
-            scaleCrownBtnLeaderBoard.setNode(crownBtnLeaderBoard);
-            scaleCrownBtnLeaderBoard.setDuration(Duration.millis(500));
-            scaleCrownBtnLeaderBoard.setCycleCount(ScaleTransition.INDEFINITE);
-            scaleCrownBtnLeaderBoard.setByX(0.13);
-            scaleCrownBtnLeaderBoard.setByY(0.13);
-            scaleCrownBtnLeaderBoard.setInterpolator(Interpolator.LINEAR);
-            scaleCrownBtnLeaderBoard.setAutoReverse(true);
-            scaleCrownBtnLeaderBoard.play();
-        }
-//        Close Btn Leaderboard
-        {
-            ScaleTransition scaleCloseBtnLeaderboard = new ScaleTransition();
-            scaleCloseBtnLeaderboard.setNode(closeBtnLeaderBoard);
-            scaleCloseBtnLeaderboard.setDuration(Duration.millis(500));
-            scaleCloseBtnLeaderboard.setCycleCount(ScaleTransition.INDEFINITE);
-            scaleCloseBtnLeaderboard.setByX(0.15);
-            scaleCloseBtnLeaderboard.setByY(0.15);
-            scaleCloseBtnLeaderboard.setInterpolator(Interpolator.LINEAR);
-            scaleCloseBtnLeaderboard.setAutoReverse(true);
-            scaleCloseBtnLeaderboard.play();
-        }
-//        Close Btn Load game
-        {
-            ScaleTransition scaleCloseBtnLoadGame = new ScaleTransition();
-            scaleCloseBtnLoadGame.setNode(closeBtnLoadGame);
-            scaleCloseBtnLoadGame.setDuration(Duration.millis(500));
-            scaleCloseBtnLoadGame.setCycleCount(ScaleTransition.INDEFINITE);
-            scaleCloseBtnLoadGame.setByX(0.15);
-            scaleCloseBtnLoadGame.setByY(0.15);
-            scaleCloseBtnLoadGame.setInterpolator(Interpolator.LINEAR);
-            scaleCloseBtnLoadGame.setAutoReverse(true);
-            scaleCloseBtnLoadGame.play();
         }
 //        Pause Btn Game Play
         {
@@ -182,81 +127,9 @@ public class HelloController implements Initializable {
             rotateReviveBtnGameOver.setInterpolator(Interpolator.LINEAR);
             rotateReviveBtnGameOver.play();
         }
-//        Home Btn Game Result
-        {
-            ScaleTransition scaleHomeBtnGameResult = new ScaleTransition();
-            scaleHomeBtnGameResult.setNode(homeBtnGameResult);
-            scaleHomeBtnGameResult.setDuration(Duration.millis(500));
-            scaleHomeBtnGameResult.setCycleCount(ScaleTransition.INDEFINITE);
-            scaleHomeBtnGameResult.setByX(0.12);
-            scaleHomeBtnGameResult.setByY(0.12);
-            scaleHomeBtnGameResult.setInterpolator(Interpolator.LINEAR);
-            scaleHomeBtnGameResult.setAutoReverse(true);
-            scaleHomeBtnGameResult.play();
-        }
     }
 
-//    ---------------------------------------- Home Screen ------------------------------------------
-    public void clicked_play_btn_home(ActionEvent e) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_play.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 680, 380);
-        Stage stage = (Stage) playBtnHome.getScene().getWindow();
-        stage.setTitle("Will Hero - Playing Game");
-        stage.setScene(scene);
-    }
-
-    @FXML
-    Button closeBtnHome;
-    public void clicked_close_btn_home(ActionEvent e) throws IOException {
-        Alert myAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        myAlert.setTitle("Confirmation Prompt");
-        myAlert.setHeaderText("Exit Game");
-        myAlert.setContentText("Are you sure, you want to exit?");
-        if(myAlert.showAndWait().get() == ButtonType.OK){
-            Stage stage = (Stage) closeBtnHome.getScene().getWindow();
-            stage.close();
-        }
-    }
-
-    @FXML
-    Button loadBtnHome;
-    public void clicked_load_btn_home(ActionEvent e) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("load_game.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 680, 380);
-        Stage stage = (Stage) loadBtnHome.getScene().getWindow();
-        stage.setTitle("Will Hero - Load Game");
-        stage.setScene(scene);
-    }
-
-    @FXML
-    Button leaderBoardBtnHome;
-    public void clicked_leader_board_btn_home(ActionEvent e) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("leader_board.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 680, 380);
-        Stage stage = (Stage) leaderBoardBtnHome.getScene().getWindow();
-        stage.setTitle("Will Hero - Leaderboard");
-        stage.setScene(scene);
-    }
-
-//    ---------------------------------------- LeaderBoard ------------------------------------------
-    public void clicked_close_btn_leader_board(ActionEvent e) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home_screen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 680, 380);
-        Stage stage = (Stage) closeBtnLeaderBoard.getScene().getWindow();
-        stage.setTitle("Will Hero - Home");
-        stage.setScene(scene);
-    }
-
-//    ---------------------------------------- Load Game ------------------------------------------
-    public void clicked_close_btn_load_game(ActionEvent e) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home_screen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 680, 380);
-        Stage stage = (Stage) closeBtnLoadGame.getScene().getWindow();
-        stage.setTitle("Will Hero - Home");
-        stage.setScene(scene);
-    }
-
-//    ---------------------------------------- Game Play ------------------------------------------
+    //    ---------------------------------------- Game Play ------------------------------------------
     public void clicked_pause_btn_game_play(ActionEvent e) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_pause.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
@@ -266,7 +139,7 @@ public class HelloController implements Initializable {
     }
 
 
-//    ---------------------------------------- Pause Game ------------------------------------------
+    //    ---------------------------------------- Pause Game ------------------------------------------
     public void clicked_close_btn_pause_game(ActionEvent e) throws IOException {
         Alert myAlert = new Alert(Alert.AlertType.CONFIRMATION);
         myAlert.setTitle("Confirmation Prompt");
@@ -289,7 +162,7 @@ public class HelloController implements Initializable {
         stage.setScene(scene);
     }
 
-//  To be changed
+    //  To be changed
     @FXML
     Button saveBtnPauseGame;
     public void clicked_save_btn_pause_game(ActionEvent e) throws IOException {
@@ -300,7 +173,7 @@ public class HelloController implements Initializable {
         stage.setScene(scene);
     }
 
-//    ---------------------------------------- Game Over ------------------------------------------
+    //    ---------------------------------------- Game Over ------------------------------------------
 //  To be changed
     public void clicked_revive_btn_game_over(ActionEvent e) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_result.fxml"));
@@ -310,14 +183,5 @@ public class HelloController implements Initializable {
         stage.setScene(scene);
     }
 
-
-//    ---------------------------------------- Game Result ------------------------------------------
-    public void clicked_home_btn_game_result(ActionEvent e) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home_screen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 680, 380);
-        Stage stage = (Stage) homeBtnGameResult.getScene().getWindow();
-        stage.setTitle("Will Hero - Home");
-        stage.setScene(scene);
-    }
 
 }

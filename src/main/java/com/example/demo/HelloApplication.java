@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class HelloApplication extends Application {
+    private GameMain myGame = GameMain.getInstance();
     @Override
     public void start(Stage stage) throws IOException {
 //        home_screen game_play game_over game_result game_pause load_game leader_board
