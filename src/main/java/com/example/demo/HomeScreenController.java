@@ -2,18 +2,21 @@ package com.example.demo;
 
 import javafx.animation.*;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class HomeScreenController implements Initializable {
@@ -79,11 +82,24 @@ public class HomeScreenController implements Initializable {
 
     //    ---------------------------------------- Home Screen ------------------------------------------
     public void clicked_play_btn_home(ActionEvent e) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_play.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 680, 380);
-        Stage stage = (Stage) playBtnHome.getScene().getWindow();
-        stage.setTitle("Will Hero - Playing Game");
-        stage.setScene(scene);
+        TextInputDialog td = new TextInputDialog("");
+        td.setHeaderText("Enter your name");
+        Optional<String> result = td.showAndWait();
+        // ok was pressed.
+        if (result.isPresent()) {
+            TextField input = td.getEditor();
+            if(input.getText()!= null && input.getText().trim().replaceAll(" +", " ").length()!=0){
+                myGame.getCurrPlayer().setName(input.getText().trim().replaceAll(" +", " "));
+//                System.out.println(myGame.getCurrPlayer().getName());
+                myGame.newGame();
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_play.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 680, 380);
+                myGame.setMyScene(scene);
+                Stage stage = (Stage) playBtnHome.getScene().getWindow();
+                stage.setTitle("Will Hero - Playing Game");
+                stage.setScene(scene);
+            }
+        }
     }
 
     @FXML

@@ -18,12 +18,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameMain {
-    private Player currPlayer = null;
+    private Player currPlayer = new Player("");
     private ArrayList<Platform> currPlatforms = new ArrayList<>();
     private ArrayList<GameObject> currGameObj = new ArrayList<>();
     private int startPos = 0;
     private int startIdx = 0;
     private int endIdx = -1;
+    private Scene myScene = null;
 
     private static GameMain myGame = null;
     public static GameMain getInstance(){
@@ -52,6 +53,9 @@ public class GameMain {
     public int getEndIdx() {
         return endIdx;
     }
+    public Scene getMyScene() {
+        return myScene;
+    }
 
     public void setStartPos(int startPos) {
         this.startPos = startPos;
@@ -62,12 +66,24 @@ public class GameMain {
     public void setEndIdx(int endIdx) {
         this.endIdx = endIdx;
     }
+    public void setMyScene(Scene myScene) {
+        this.myScene = myScene;
+    }
 
     public void showMainMenu(){}
-    public void newGame(){}
+    public void newGame(){
+        int dist_bw_plat = 280, maxY = 240, minY = 200;
+        for (int i = 0; i < 4; i++) {
+            Platform newPlat = new Platform();
+            newPlat.setInf(40+i*dist_bw_plat, (int)((Math.random() * (maxY - minY)) + minY), 134, 61);
+            currPlatforms.add(newPlat);
+        }
+    }
     public void loadGame(){}
     public void showLeaderBoard(){}
-    public void startGame(){}
+    public void startGame(){
+
+    }
     public void resumeGame(){}
     public void pauseGame(){}
     public void saveGame(){}

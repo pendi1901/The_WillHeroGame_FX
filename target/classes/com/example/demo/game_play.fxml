@@ -9,28 +9,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GamePlayController">
+<AnchorPane maxHeight="380.0" maxWidth="680.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="663.0" style="-fx-background-color: #00dffe #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GamePlayController">
    <children>
-      <ImageView fitHeight="61.0" fitWidth="134.0" layoutX="47.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/Images/floating_island_2_full.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="throwKnivesGamePlay" fitHeight="150.0" fitWidth="147.0" layoutX="82.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/Images/knives.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="heroHome" fitHeight="52.0" fitWidth="65.0" layoutX="79.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/Images/hero.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="86.0" fitWidth="120.0" layoutX="340.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/Images/floating_island_1_full.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="45.0" fitWidth="40.0" layoutX="11.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/Images/knives_icon.png" />
@@ -51,21 +31,6 @@
       <ImageView fitHeight="73.0" fitWidth="106.0" layoutX="476.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/Images/cloud.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="greenOrcHome" fitHeight="52.0" fitWidth="50.0" layoutX="375.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/Images/green_orc.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="86.0" fitWidth="120.0" layoutX="500.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/Images/floating_island_1_full.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="85.0" fitWidth="40.0" layoutX="562.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/Images/tnt.png" />
          </image>
       </ImageView>
       <Label layoutX="327.0" layoutY="-3.0" prefHeight="51.0" prefWidth="65.0" text="50" textAlignment="CENTER" textFill="WHITE">
@@ -95,5 +60,25 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <ImageView fx:id="platform1" fitHeight="61.0" fitWidth="134.0" layoutX="26.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/floating_island_2_full.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="platform2" fitHeight="61.0" fitWidth="134.0" layoutX="185.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/floating_island_2_full.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="platform3" fitHeight="61.0" fitWidth="134.0" layoutX="346.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/floating_island_2_full.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="platform4" fitHeight="61.0" fitWidth="134.0" layoutX="506.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/Images/floating_island_2_full.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

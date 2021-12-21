@@ -35,4 +35,10 @@ public class Inf {
     public void setBrt(int brt) {
         this.brt = brt;
     }
+    public void changeX(int x) {
+        this.x += x;
+    }
+    public void changeY(int y) {
+        this.y += y;
+    }
 }
