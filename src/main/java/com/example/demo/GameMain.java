@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
@@ -15,16 +16,16 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class GameMain {
-    private Player currPlayer = new Player("");
     private ArrayList<Platform> currPlatforms = new ArrayList<>();
     private ArrayList<GameObject> currGameObj = new ArrayList<>();
-    private int startPos = 0;
-    private int startIdx = 0;
-    private int endIdx = -1;
+    private ArrayList<Integer> objOnPlatforms = new ArrayList<>();
+    private Player currPlayer = null;
     private Scene myScene = null;
+    private int doneTill = 4;
 
     private static GameMain myGame = null;
     public static GameMain getInstance(){
@@ -33,57 +34,73 @@ public class GameMain {
         }
         return myGame;
     }
-    private GameMain(){}
-
-    public Player getCurrPlayer() {
-        return currPlayer;
+    private GameMain(){
+        // 0 - E; 1 - GO; 2 - RO; 3 - CC; 4 - WC; 5 - TNT; 6 - B,FC,P
+        objOnPlatforms.addAll(Arrays.asList(
+                0,0,1,3,0,5,1,0,2,
+                0,4,1,3,0,2,5,1,0,
+                2,4,1,3,0,2,1,0,5,
+                2,0,1,4,0,2,1,5,0,
+                6));
+//                0,0,0,3,0,1,0,4,1,
+//                0,3,1,0,0,2,4,0,1,
+//                5,0,1,3,0,4,0,5,2,
+//                0,0,2,0,4,1,0,5,0,
+//                6));
     }
+
     public ArrayList<Platform> getCurrPlatforms() {
         return currPlatforms;
     }
     public ArrayList<GameObject> getCurrGameObj() {
         return currGameObj;
     }
-    public int getStartPos() {
-        return startPos;
-    }
-    public int getStartIdx() {
-        return startIdx;
-    }
-    public int getEndIdx() {
-        return endIdx;
+    public Player getCurrPlayer() {
+        if(currPlayer==null){
+            return currPlayer = new Player("");
+        }
+        return currPlayer;
     }
     public Scene getMyScene() {
         return myScene;
     }
+    public ArrayList<Integer> getObjOnPlatforms() {
+        return objOnPlatforms;
+    }
+    public int getDoneTill() {
+        return doneTill;
+    }
 
-    public void setStartPos(int startPos) {
-        this.startPos = startPos;
+    public void changeDoneTill() {
+        this.doneTill += 1;
     }
-    public void setStartIdx(int startIdx) {
-        this.startIdx = startIdx;
-    }
-    public void setEndIdx(int endIdx) {
-        this.endIdx = endIdx;
-    }
+
     public void setMyScene(Scene myScene) {
         this.myScene = myScene;
     }
 
-    public void showMainMenu(){}
     public void newGame(){
-        int dist_bw_plat = 280, maxY = 240, minY = 200;
+        this.doneTill = 4;
+        this.currPlayer.setPoints(0);
+        this.currPlayer.setCoins(0);
+        this.getCurrPlayer().setMoveX(1);
+        this.getCurrPlayer().setPrevStart(140);
+
+        this.currPlatforms = new ArrayList<>();
+        this.currGameObj = new ArrayList<>();
+//        Setting platform configurations
+        int dist_bw_platforms = 280, maxY = 240, minY = 200;
         for (int i = 0; i < 4; i++) {
             Platform newPlat = new Platform();
-            newPlat.setInf(40+i*dist_bw_plat, (int)((Math.random() * (maxY - minY)) + minY), 134, 61);
+            newPlat.setInf(40+i*dist_bw_platforms, (int)((Math.random() * (maxY - minY)) + minY), 134, 61);
             currPlatforms.add(newPlat);
         }
     }
+
+    public void showMainMenu(){}
     public void loadGame(){}
     public void showLeaderBoard(){}
-    public void startGame(){
-
-    }
+    public void startGame(){}
     public void resumeGame(){}
     public void pauseGame(){}
     public void saveGame(){}

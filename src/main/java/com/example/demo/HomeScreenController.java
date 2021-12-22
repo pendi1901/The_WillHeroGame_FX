@@ -89,9 +89,11 @@ public class HomeScreenController implements Initializable {
         if (result.isPresent()) {
             TextField input = td.getEditor();
             if(input.getText()!= null && input.getText().trim().replaceAll(" +", " ").length()!=0){
+//                Set name of player
                 myGame.getCurrPlayer().setName(input.getText().trim().replaceAll(" +", " "));
-//                System.out.println(myGame.getCurrPlayer().getName());
+//                Set game configurations
                 myGame.newGame();
+
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_play.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 680, 380);
                 myGame.setMyScene(scene);
@@ -104,7 +106,7 @@ public class HomeScreenController implements Initializable {
 
     @FXML
     Button closeBtnHome;
-    public void clicked_close_btn_home(ActionEvent e) throws IOException {
+    public void clicked_close_btn_home(ActionEvent e)  {
         Alert myAlert = new Alert(Alert.AlertType.CONFIRMATION);
         myAlert.setTitle("Confirmation Prompt");
         myAlert.setHeaderText("Exit Game");

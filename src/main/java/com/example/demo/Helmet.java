@@ -12,7 +12,7 @@ public class Helmet extends GameObject{
         allWeapons.add(new ThrowingKnife());
         allWeapons.add(new Sword());
         selectedIdx = -1;
-        weaponCnt = 0;
+        weaponCnt = 0; // 0:none ; 1:exactly one weapon; 2: both weapon
     }
 
     public int getSelectedIdx() {
