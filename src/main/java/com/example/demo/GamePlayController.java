@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.util.Pair;
@@ -25,6 +26,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class GamePlayController implements Initializable {
     private GameMain myGame = GameMain.getInstance();
@@ -71,6 +73,8 @@ public class GamePlayController implements Initializable {
     @FXML
     ImageView tnt;
     @FXML
+    ImageView blastGame;
+    @FXML
     ImageView finalCoinChest;
 
     @FXML
@@ -88,7 +92,24 @@ public class GamePlayController implements Initializable {
     @FXML
     Button reviveBtnGameOver;
 
+    private int p_go = 10;
+    private int p_ro = 50;
+    private int p_bo = 50;
+    private boolean orc_falling = false;
+    private boolean tnt_active = false;
+    private boolean coin_touched = false;
+    private boolean game_over = false;
     private boolean moveX = false;
+    RotateTransition coinRotate = new RotateTransition();
+
+    public void game_over() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_over.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 680, 380);
+        Stage stage = (Stage) heroGamePlay.getScene().getWindow();
+        stage.setTitle("Will Hero - Game Over");
+        stage.setScene(scene);
+    }
+
     Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), new EventHandler<ActionEvent>(){
         double deltaY = 1;
         double g = 0.02;
@@ -96,6 +117,15 @@ public class GamePlayController implements Initializable {
         double deltaXR = 1.5;
         @Override
         public void handle(ActionEvent actionEvent) {
+            if(game_over){
+                game_over = false;
+                try {
+                    timeline.stop();
+                    game_over();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
             if(moveX){
                 if(myGame.getCurrPlayer().getMoveX()==1){
                     heroGamePlay.setLayoutX(heroGamePlay.getLayoutX()+deltaX);
@@ -126,14 +156,13 @@ public class GamePlayController implements Initializable {
             } else if (heroGamePlay.getLayoutY() + myGame.getCurrPlayer().getJumpHeight() < myGame.getCurrPlayer().getPrevStart()) {
                 deltaY *= -1;
             }
-//            jumpHero(deltaX, deltaY, g, deltaXR);
         }
     }));
 
     public void makeVisible(ImageView img_v, Platform p){
         img_v.setVisible(true);
         img_v.setLayoutX(p.getInf().getX()+p.getInf().getLen()/2);
-        img_v.setLayoutY(p.getInf().getY()-img_v.getFitHeight());
+        img_v.setLayoutY(p.getInf().getY()-img_v.getFitHeight()+1);
     }
 
     public void makeHide(ImageView img_v, int type){
@@ -162,10 +191,12 @@ public class GamePlayController implements Initializable {
         switch (myGame.getObjOnPlatforms().get(idx)){
             // 0 - E; 1 - GO; 2 - RO; 3 - CC; 4 - WC; 5 - TNT; 6 - B,FC,P
             case 1:
+                p_go = 1;
                 makeVisible(greenOrcGamePlay, p);
                 myObjWithType.add(new Pair(greenOrcGamePlay, 1));
                 break;
             case 2:
+                p_ro = 2;
                 makeVisible(redOrcGamePlay, p);
                 myObjWithType.add(new Pair(redOrcGamePlay, 2));
                 break;
@@ -191,53 +222,67 @@ public class GamePlayController implements Initializable {
     public void lastStep(){
         platform5.setLayoutX(platform4.getLayoutX()+280);
         platform5.setLayoutY(240);
+        platform5.setFitWidth(platform5.getFitWidth()+20);
         platform5.setVisible(true);
 
         bossOrcGamePlay.setVisible(true);
-        bossOrcGamePlay.setLayoutX(platform5.getLayoutX()+50);
-        bossOrcGamePlay.setLayoutY(platform5.getLayoutY()-bossOrcGamePlay.getFitHeight());
+        bossOrcGamePlay.setLayoutX(platform5.getLayoutX()+60);
+        bossOrcGamePlay.setLayoutY(platform5.getLayoutY()-bossOrcGamePlay.getFitHeight()+1);
         princessGamePlay.setVisible(true);
-        princessGamePlay.setLayoutX(platform5.getLayoutX()+200);
-        princessGamePlay.setLayoutY(platform5.getLayoutY()-princessGamePlay.getFitHeight());
+        princessGamePlay.setLayoutX(platform5.getLayoutX()+250);
+        princessGamePlay.setLayoutY(platform5.getLayoutY()-princessGamePlay.getFitHeight()+1);
         finalCoinChest.setVisible(true);
-        finalCoinChest.setLayoutX(platform5.getLayoutX()+280);
+        finalCoinChest.setLayoutX(platform5.getLayoutX()+340);
         finalCoinChest.setLayoutY(platform5.getLayoutY()-finalCoinChest.getFitHeight());
+    }
+
+    public void set_coin_touched(){
+        coin_touched = false;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        Hero
-//        if(heroHome!=null){
-//            TranslateTransition translateHero = new TranslateTransition();
-//            translateHero.setNode(heroHome);
-//            translateHero.setDuration(Duration.millis(800));
-//            translateHero.setCycleCount(TranslateTransition.INDEFINITE);
-//            translateHero.setByY(-50);
-//            translateHero.setAutoReverse(true);
-//            translateHero.play();
-//        }
-////        Green orc
-//        {
-//            TranslateTransition translateGOrc = new TranslateTransition();
-//            translateGOrc.setNode(greenOrcHome);
-//            translateGOrc.setDuration(Duration.millis(800));
-//            translateGOrc.setDelay(Duration.millis(200));
-//            translateGOrc.setCycleCount(TranslateTransition.INDEFINITE);
-//            translateGOrc.setByY(-50);
-//            translateGOrc.setAutoReverse(true);
-//            translateGOrc.play();
-//        }
-////        Red orc
-//        {
-//            TranslateTransition translateROrc = new TranslateTransition();
-//            translateROrc.setNode(redOrcHome);
-//            translateROrc.setDuration(Duration.millis(800));
-//            translateROrc.setCycleCount(TranslateTransition.INDEFINITE);
-//            translateROrc.setDelay(Duration.millis(400));
-//            translateROrc.setByY(-50);
-//            translateROrc.setAutoReverse(true);
-//            translateROrc.play();
-//        }
+//        Green orc
+        {
+            TranslateTransition translateGOrc = new TranslateTransition();
+            translateGOrc.setNode(greenOrcGamePlay);
+            translateGOrc.setDuration(Duration.millis(800));
+            translateGOrc.setCycleCount(TranslateTransition.INDEFINITE);
+            translateGOrc.setByY(-60);
+            translateGOrc.setAutoReverse(true);
+            translateGOrc.play();
+        }
+//        Red orc
+        {
+            TranslateTransition translateROrc = new TranslateTransition();
+            translateROrc.setNode(redOrcGamePlay);
+            translateROrc.setDuration(Duration.millis(800));
+            translateROrc.setCycleCount(TranslateTransition.INDEFINITE);
+            translateROrc.setByY(-60);
+            translateROrc.setAutoReverse(true);
+            translateROrc.play();
+        }
+//        Boss orc
+        {
+            TranslateTransition translateROrc = new TranslateTransition();
+            translateROrc.setNode(bossOrcGamePlay);
+            translateROrc.setDuration(Duration.millis(800));
+            translateROrc.setCycleCount(TranslateTransition.INDEFINITE);
+            translateROrc.setByY(-40);
+            translateROrc.setAutoReverse(true);
+            translateROrc.play();
+        }
+//        Princess
+        {
+            TranslateTransition translateROrc = new TranslateTransition();
+            translateROrc.setNode(princessGamePlay);
+            translateROrc.setDuration(Duration.millis(800));
+            translateROrc.setDelay(Duration.millis(400));
+            translateROrc.setCycleCount(TranslateTransition.INDEFINITE);
+            translateROrc.setByY(-50);
+            translateROrc.setAutoReverse(true);
+            translateROrc.play();
+        }
 ////        Throw Knives Game Play
 //        {
 //            TranslateTransition translateKnivesGamePlay = new TranslateTransition();
@@ -246,18 +291,6 @@ public class GamePlayController implements Initializable {
 //            translateKnivesGamePlay.setCycleCount(TranslateTransition.INDEFINITE);
 //            translateKnivesGamePlay.setByX(150);
 //            translateKnivesGamePlay.play();
-//        }
-//        Pause Btn Game Play
-//        {
-//            ScaleTransition scalePauseBtnGamePlay = new ScaleTransition();
-//            scalePauseBtnGamePlay.setNode(pauseBtnGamePlay);
-//            scalePauseBtnGamePlay.setDuration(Duration.millis(500));
-//            scalePauseBtnGamePlay.setCycleCount(ScaleTransition.INDEFINITE);
-//            scalePauseBtnGamePlay.setByX(0.15);
-//            scalePauseBtnGamePlay.setByY(0.15);
-//            scalePauseBtnGamePlay.setInterpolator(Interpolator.LINEAR);
-//            scalePauseBtnGamePlay.setAutoReverse(true);
-//            scalePauseBtnGamePlay.play();
 //        }
 //        Play Btn Home
         {
@@ -313,6 +346,7 @@ public class GamePlayController implements Initializable {
             throwingKnifeGamePlay.setVisible(false);
             swordGamePlay.setVisible(false);
             tnt.setVisible(false);
+            blastGame.setVisible(false);
 
             myPlatformImages = new ArrayList<>();
             myObjWithType = new ArrayList<>();
@@ -342,10 +376,60 @@ public class GamePlayController implements Initializable {
                 }
             });
 
+        }
+        if(pointsScoredGamePlay!=null){
             pointsScoredGamePlay.setText(Integer.toString((int)myGame.getCurrPlayer().getPoints()));
         }
-
+        if(coinsCollectedGamePlay!=null){
+            coinsCollectedGamePlay.setText(Integer.toString(myGame.getCurrPlayer().getCoins()));
+        }
     }
+
+    public void check_collision_orcs(ImageView orc){
+        if(orc_falling==false && ((heroGamePlay.getLayoutY()>orc.getLayoutY()-20 && orc!=bossOrcGamePlay) || (heroGamePlay.getLayoutY()>orc.getLayoutY()+orc.getFitHeight()/3 && orc==bossOrcGamePlay))){
+            Path path = new Path();
+            path.getElements().add(new MoveTo(0,0));
+            ArcTo myArc = new ArcTo(); myArc.setX(0); myArc.setY(250); myArc.setRadiusX(20); myArc.setRadiusY(80);
+            path.getElements().add(myArc);
+
+            PathTransition pathTransition = new PathTransition();
+            pathTransition.setDuration(Duration.millis(1200));
+            pathTransition.setPath(path);
+            pathTransition.setNode(heroGamePlay);
+            pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+            pathTransition.play();
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            game_over = true;
+                        }
+                    },
+                    1200
+            );
+        }
+    }
+
+    public void fall_orcs(ImageView orc){
+        TranslateTransition fall_Orc = new TranslateTransition();
+        fall_Orc.setNode(orc);
+        fall_Orc.setDuration(Duration.millis(1200));
+        fall_Orc.setCycleCount(1);
+        fall_Orc.setByY(500);
+        fall_Orc.play();
+        new java.util.Timer().schedule(
+            new java.util.TimerTask() {
+                @Override
+                public void run() {
+                    orc_falling = false;
+                    orc.setVisible(false);
+                    orc.setLayoutY(500);
+                }
+            },
+        1200
+        );
+    }
+
 
 //    0 for normal with platform; 1 for orc (win); 2 for orc (lose); 3 for coins chest; 4 for weapon chest
     public int checkCollision() throws IOException {
@@ -357,6 +441,7 @@ public class GamePlayController implements Initializable {
                 }
             }
         }
+//        last platform
         if(myGame.getDoneTill()>=37){
             if(heroGamePlay.getBoundsInParent().intersects(platform5.getBoundsInParent())){
                 if((heroGamePlay.getLayoutY()+heroGamePlay.getFitHeight()) - platform5.getLayoutY() < 2){
@@ -364,15 +449,101 @@ public class GamePlayController implements Initializable {
                 }
             }
         }
-//        game over
+//        fall
         if(heroGamePlay.getLayoutY()>260){
             timeline.stop();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_over.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 680, 380);
-            Stage stage = (Stage) heroGamePlay.getScene().getWindow();
-            stage.setTitle("Will Hero - Game Over");
-            stage.setScene(scene);
+            game_over();
         }
+//        collision with orcs
+        if(heroGamePlay.getBoundsInParent().intersects(greenOrcGamePlay.getBoundsInParent())) {
+            check_collision_orcs(greenOrcGamePlay);
+            p_go -= 1;
+            if(p_go==0){
+                orc_falling = true;
+                fall_orcs(greenOrcGamePlay);
+            }
+        }
+        if(heroGamePlay.getBoundsInParent().intersects(redOrcGamePlay.getBoundsInParent())) {
+            check_collision_orcs(redOrcGamePlay);
+            p_ro -= 1;
+            if(p_ro==0){
+                orc_falling = true;
+                fall_orcs(redOrcGamePlay);
+            }
+        }
+        if(heroGamePlay.getBoundsInParent().intersects(bossOrcGamePlay.getBoundsInParent())){
+            check_collision_orcs(bossOrcGamePlay);
+            p_bo -= 1;
+            if(p_bo==0){
+                orc_falling = true;
+                fall_orcs(bossOrcGamePlay);
+            }
+        }
+//        collision with coin chest
+        if(coin_touched==false && heroGamePlay.getBoundsInParent().intersects(coinChest.getBoundsInParent())){
+            coin_touched = true;
+            myGame.getCurrPlayer().setCoins((myGame.getCurrPlayer().getCoins() + (Math.random()<0.7?5:10)));
+            coinsCollectedGamePlay.setText(Integer.toString(myGame.getCurrPlayer().getCoins()));
+
+            coinRotate.setNode(coinChest);
+            coinRotate.setDuration(Duration.millis(500));
+            coinRotate.setFromAngle(0);
+            coinRotate.setToAngle(360);
+            coinRotate.play();
+
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            set_coin_touched();
+                            coinRotate.stop();
+                        }
+                    },
+                    2500
+            );
+        }
+//        collision with weapon chest
+//        collision with tnt
+        if(heroGamePlay.getBoundsInParent().intersects(tnt.getBoundsInParent())){
+            if(!tnt_active) {
+                tnt_active = true;
+                new java.util.Timer().schedule(
+                        new java.util.TimerTask() {
+                            @Override
+                            public void run() {
+                                blastGame.setLayoutX(tnt.getLayoutX());
+                                blastGame.setLayoutY(tnt.getLayoutY());
+                                tnt.setVisible(false);
+                                blastGame.setVisible(true);
+                                new java.util.Timer().schedule(
+                                        new java.util.TimerTask() {
+                                            @Override
+                                            public void run() {
+                                                blastGame.setVisible(false);
+                                                tnt_active = false;
+                                            }
+                                        },
+                                        250
+                                );
+                                if (heroGamePlay.getLayoutX() - tnt.getLayoutX() < 60) {
+                                    tnt_active = false;
+                                    new java.util.Timer().schedule(
+                                            new java.util.TimerTask() {
+                                                @Override
+                                                public void run() {
+                                                    game_over = true;
+                                                }
+                                            },
+                                            250
+                                    );
+                                }
+                            }
+                        },
+                        1200
+                );
+            }
+        }
+
         return -1;
     }
 
@@ -398,7 +569,8 @@ public class GamePlayController implements Initializable {
                     setupPlatform(myGame.getDoneTill());
                     myGame.changeDoneTill();
                 }
-            } else {
+            }
+            else {
 //              System.out.println(myPlatformImages.get(i).getLayoutX()+" ok");
                 myGame.getCurrPlatforms().get(i).getInf().changeX(-changeXBy);
                 myPlatformImages.get(i).setLayoutX(myGame.getCurrPlatforms().get(i).getInf().getX());

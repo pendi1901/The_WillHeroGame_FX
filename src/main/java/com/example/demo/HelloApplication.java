@@ -50,6 +50,7 @@ public class HelloApplication extends Application {
         myAlert.setContentText("Are you sure, you want to exit?");
         if(myAlert.showAndWait().get() == ButtonType.OK){
             stage.close();
+            System.exit(0);
         }
     }
 

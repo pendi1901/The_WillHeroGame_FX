@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -26,6 +27,10 @@ public class GameResultController implements Initializable {
     ImageView greenOrcHome;
     @FXML
     Button homeBtnGameResult;
+    @FXML
+    Label bestScore;
+    @FXML
+    Label pointsScoredGamePlay;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,6 +67,10 @@ public class GameResultController implements Initializable {
             scaleHomeBtnGameResult.setAutoReverse(true);
             scaleHomeBtnGameResult.play();
         }
+        if(pointsScoredGamePlay!=null){
+            pointsScoredGamePlay.setText(Integer.toString((int)myGame.getCurrPlayer().getPoints()));
+        }
+        bestScore.setText(Integer.toString(130));
     }
 
     //    ---------------------------------------- Game Result ------------------------------------------

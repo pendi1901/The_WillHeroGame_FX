@@ -17,12 +17,12 @@
          </image>
       </ImageView>
       <BorderPane layoutX="147.0" layoutY="35.0" prefHeight="169.0" prefWidth="382.0" style="-fx-border-color: #00dffe #00dffe; -fx-border-width: 5px;" />
-      <Label layoutX="302.0" layoutY="302.0" prefHeight="33.0" prefWidth="88.0" text="15 Coins" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="302.0" layoutY="302.0" prefHeight="33.0" prefWidth="99.0" text="100 Coins" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="27.0" fitWidth="31.0" layoutX="390.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="27.0" fitWidth="31.0" layoutX="409.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/Images/coin.png" />
          </image>
