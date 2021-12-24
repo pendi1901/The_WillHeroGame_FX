@@ -55,6 +55,8 @@ public class LeaderBoardController implements Initializable {
 
     //    ---------------------------------------- LeaderBoard ------------------------------------------
     public void clicked_close_btn_leader_board(ActionEvent e) throws IOException {
+        PlayMusic btnClick = new PlayMusic("src/main/resources/assets/Audio/btnClick.wav");
+        btnClick.play();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home_screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) closeBtnLeaderBoard.getScene().getWindow();

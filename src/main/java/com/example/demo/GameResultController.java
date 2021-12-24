@@ -75,6 +75,12 @@ public class GameResultController implements Initializable {
 
     //    ---------------------------------------- Game Result ------------------------------------------
     public void clicked_home_btn_game_result(ActionEvent e) throws IOException {
+        PlayMusic btnClick = new PlayMusic("src/main/resources/assets/Audio/btnClick.wav");
+        btnClick.play();
+        myGame.getMyMusic().stop();
+        myGame.setMyMusic(new PlayMusic("src/main/resources/assets/Audio/gamePlay.mp3"));
+        myGame.getMyMusic().play();
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home_screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) homeBtnGameResult.getScene().getWindow();

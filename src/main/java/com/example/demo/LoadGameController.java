@@ -41,6 +41,8 @@ public class LoadGameController implements Initializable {
 
     //    ---------------------------------------- Load Game ------------------------------------------
     public void clicked_close_btn_load_game(ActionEvent e) throws IOException {
+        PlayMusic btnClick = new PlayMusic("src/main/resources/assets/Audio/btnClick.wav");
+        btnClick.play();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home_screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) closeBtnLoadGame.getScene().getWindow();

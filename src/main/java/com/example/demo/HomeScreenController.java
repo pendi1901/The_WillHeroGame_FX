@@ -32,8 +32,15 @@ public class HomeScreenController implements Initializable {
     @FXML
     Button playBtnHome;
 
+    PlayMusic btnClick = new PlayMusic("src/main/resources/assets/Audio/btnClick.wav");
+    PlayMusic gameStart = new PlayMusic("src/main/resources/assets/Audio/gamePlay.mp3");
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(myGame.getMyMusic()==null){
+            myGame.setMyMusic(gameStart);
+            gameStart.play();
+        }
 //        Hero
         {
             TranslateTransition translateHero = new TranslateTransition();
@@ -82,9 +89,12 @@ public class HomeScreenController implements Initializable {
 
     //    ---------------------------------------- Home Screen ------------------------------------------
     public void clicked_play_btn_home(ActionEvent e) throws IOException {
+        btnClick.play();
+
         TextInputDialog td = new TextInputDialog("");
         td.setHeaderText("Enter your name");
         Optional<String> result = td.showAndWait();
+        btnClick.play();
         // ok was pressed.
         if (result.isPresent()) {
             TextField input = td.getEditor();
@@ -93,6 +103,8 @@ public class HomeScreenController implements Initializable {
                 myGame.getCurrPlayer().setName(input.getText().trim().replaceAll(" +", " "));
 //                Set game configurations
                 myGame.newGame();
+                myGame.getMyMusic().stop();
+                myGame.setMyMusic(null);
 
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_play.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 680, 380);
@@ -107,11 +119,14 @@ public class HomeScreenController implements Initializable {
     @FXML
     Button closeBtnHome;
     public void clicked_close_btn_home(ActionEvent e)  {
+        btnClick.play();
         Alert myAlert = new Alert(Alert.AlertType.CONFIRMATION);
         myAlert.setTitle("Confirmation Prompt");
         myAlert.setHeaderText("Exit Game");
         myAlert.setContentText("Are you sure, you want to exit?");
-        if(myAlert.showAndWait().get() == ButtonType.OK){
+        ButtonType t = myAlert.showAndWait().get();
+        btnClick.play();
+        if(t == ButtonType.OK){
             Stage stage = (Stage) closeBtnHome.getScene().getWindow();
             stage.close();
         }
@@ -120,6 +135,8 @@ public class HomeScreenController implements Initializable {
     @FXML
     Button loadBtnHome;
     public void clicked_load_btn_home(ActionEvent e) throws IOException {
+        btnClick.play();
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("load_game.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) loadBtnHome.getScene().getWindow();
@@ -130,6 +147,8 @@ public class HomeScreenController implements Initializable {
     @FXML
     Button leaderBoardBtnHome;
     public void clicked_leader_board_btn_home(ActionEvent e) throws IOException {
+        btnClick.play();
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("leader_board.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) leaderBoardBtnHome.getScene().getWindow();

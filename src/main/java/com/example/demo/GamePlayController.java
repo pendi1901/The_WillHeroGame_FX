@@ -113,17 +113,35 @@ public class GamePlayController implements Initializable {
     RotateTransition coinRotate = new RotateTransition();
     ScaleTransition scaleWinLogo = new ScaleTransition();
 
+
+    PlayMusic btnClick = new PlayMusic("src/main/resources/assets/Audio/btnClick.wav");
+    PlayMusic gameStart = new PlayMusic("src/main/resources/assets/Audio/game.mp3");
+    PlayMusic chestSound = new PlayMusic("src/main/resources/assets/Audio/chest.wav");
+    PlayMusic gameOverSound = new PlayMusic("src/main/resources/assets/Audio/gameOver.wav");
+    PlayMusic gameWinSound = new PlayMusic("src/main/resources/assets/Audio/gameWin.wav");
+    PlayMusic moveHeroSound = new PlayMusic("src/main/resources/assets/Audio/moveHero.wav");
+    PlayMusic orcDieSound = new PlayMusic("src/main/resources/assets/Audio/orcDie.wav");
+    PlayMusic tntSound = new PlayMusic("src/main/resources/assets/Audio/tnt.wav");
+
     public void game_over() throws IOException {
+        gameOverSound.play();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_over.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) heroGamePlay.getScene().getWindow();
         if(stage!=null){
+            myGame.getMyMusic().stop();
+            myGame.setMyMusic(new PlayMusic("src/main/resources/assets/Audio/relax.mp3"));
+            myGame.getMyMusic().play();
+
             stage.setTitle("Will Hero - Game Over");
             stage.setScene(scene);
         }
     }
 
     public void show_result_game_win() throws IOException {
+        myGame.setMyMusic(new PlayMusic("src/main/resources/assets/Audio/relax.mp3"));
+        myGame.getMyMusic().play();
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_result.fxml"));
         Scene scene = null;
         scene = new Scene(fxmlLoader.load(), 680, 380);
@@ -140,6 +158,11 @@ public class GamePlayController implements Initializable {
         @Override
         public void handle(ActionEvent actionEvent) {
             if(game_done==true){
+                if(myGame.getMyMusic()!=null){
+                    myGame.getMyMusic().stop();
+                    myGame.setMyMusic(null);
+                    gameWinSound.play();
+                }
                 if(heroGamePlay.getLayoutX()<princessGamePlay.getLayoutX()-100){
                     heroGamePlay.setLayoutX(heroGamePlay.getLayoutX() + 0.5);
                 }
@@ -280,6 +303,10 @@ public class GamePlayController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(myGame.getMyMusic()==null){
+            myGame.setMyMusic(gameStart);
+            gameStart.play();
+        }
 //        Green orc
         {
             TranslateTransition translateGOrc = new TranslateTransition();
@@ -636,6 +663,7 @@ public class GamePlayController implements Initializable {
             check_collision_orcs(greenOrcGamePlay);
             p_go -= 1;
             if(p_go==0){
+                orcDieSound.play();
                 orc_falling = true;
                 fall_orcs(greenOrcGamePlay);
                 myGame.getCurrPlayer().setCoins((myGame.getCurrPlayer().getCoins() + 1));
@@ -646,6 +674,7 @@ public class GamePlayController implements Initializable {
             check_collision_orcs(redOrcGamePlay);
             p_ro -= 1;
             if(p_ro==0){
+                orcDieSound.play();
                 orc_falling = true;
                 fall_orcs(redOrcGamePlay);
                 myGame.getCurrPlayer().setCoins((myGame.getCurrPlayer().getCoins() + 1));
@@ -656,6 +685,7 @@ public class GamePlayController implements Initializable {
             check_collision_orcs(bossOrcGamePlay);
             p_bo -= 1;
             if(p_bo==0){
+                orcDieSound.play();
                 orc_falling = true;
                 fall_orcs(bossOrcGamePlay);
                 myGame.getCurrPlayer().setCoins((myGame.getCurrPlayer().getCoins() + 10));
@@ -668,6 +698,7 @@ public class GamePlayController implements Initializable {
         }
 //        collision with coin chest
         if(coin_touched==false && heroGamePlay.getBoundsInParent().intersects(coinChest.getBoundsInParent())){
+            chestSound.play();
             coin_touched = true;
             myGame.getCurrPlayer().setCoins((myGame.getCurrPlayer().getCoins() + (Math.random()<0.7?5:10)));
             coinsCollectedGamePlay.setText(Integer.toString(myGame.getCurrPlayer().getCoins()));
@@ -691,6 +722,7 @@ public class GamePlayController implements Initializable {
         }
 //        collision with weapon chest
         if(weapon_touched==false && heroGamePlay.getBoundsInParent().intersects(weaponChest.getBoundsInParent())){
+            chestSound.play();
             weapon_touched = true;
             myGame.getCurrPlayer().getHero().getMyHelmet().setWeaponCnt();
             myGame.getCurrPlayer().getHero().getMyHelmet().setSelectedIdx();
@@ -733,6 +765,7 @@ public class GamePlayController implements Initializable {
                         new java.util.TimerTask() {
                             @Override
                             public void run() {
+                                tntSound.play();
                                 blastGame.setLayoutX(tnt.getLayoutX());
                                 blastGame.setLayoutY(tnt.getLayoutY());
                                 tnt.setVisible(false);
@@ -767,11 +800,13 @@ public class GamePlayController implements Initializable {
         }
 //        knife collision with orc
         if(knives_active==true && throwingKnifeGamePlay.getBoundsInParent().intersects(greenOrcGamePlay.getBoundsInParent())){
+            orcDieSound.play();
             fall_orcs_knives(greenOrcGamePlay);
             myGame.getCurrPlayer().setCoins((myGame.getCurrPlayer().getCoins() + 1));
             coinsCollectedGamePlay.setText(Integer.toString(myGame.getCurrPlayer().getCoins()));
         }
         if(knives_active==true && throwingKnifeGamePlay.getBoundsInParent().intersects(redOrcGamePlay.getBoundsInParent())){
+            orcDieSound.play();
             fall_orcs_knives(redOrcGamePlay);
             myGame.getCurrPlayer().setCoins((myGame.getCurrPlayer().getCoins() + 1));
             coinsCollectedGamePlay.setText(Integer.toString(myGame.getCurrPlayer().getCoins()));
@@ -783,6 +818,7 @@ public class GamePlayController implements Initializable {
     //    ---------------------------------------- Game Play ------------------------------------------
     public void move(){
         if(game_done==false) {
+            moveHeroSound.play();
             int changeXBy = 40;
             moveX = true;
             myGame.getCurrPlayer().changePoints(myGame.getCurrPlayer().getPoints() < 130 ? 0.5 : 0);
@@ -826,6 +862,7 @@ public class GamePlayController implements Initializable {
     }
 
     public void clicked_pause_btn_game_play(ActionEvent e) throws IOException {
+        btnClick.play();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_pause.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) pauseBtnGamePlay.getScene().getWindow();
@@ -835,11 +872,18 @@ public class GamePlayController implements Initializable {
 
     //    ---------------------------------------- Pause Game ------------------------------------------
     public void clicked_close_btn_pause_game(ActionEvent e) throws IOException {
+        btnClick.play();
         Alert myAlert = new Alert(Alert.AlertType.CONFIRMATION);
         myAlert.setTitle("Confirmation Prompt");
         myAlert.setHeaderText("Are you sure, you want to exit this current game?");
         myAlert.setContentText("Your data for this game will be lost!");
-        if(myAlert.showAndWait().get() == ButtonType.OK){
+        ButtonType t = myAlert.showAndWait().get();
+        btnClick.play();
+        if(t == ButtonType.OK){
+            if(myGame.getMyMusic()!=null) {
+                myGame.getMyMusic().stop();
+                myGame.setMyMusic(null);
+            }
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home_screen.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 680, 380);
             Stage stage = (Stage) closeBtnPauseGame.getScene().getWindow();
@@ -849,6 +893,7 @@ public class GamePlayController implements Initializable {
     }
 
     public void clicked_play_btn_pause_game(ActionEvent e) throws IOException {
+        btnClick.play();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_play.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) playBtnPauseGame.getScene().getWindow();
@@ -860,10 +905,15 @@ public class GamePlayController implements Initializable {
     @FXML
     Button saveBtnPauseGame;
     public void clicked_save_btn_pause_game(ActionEvent e) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_over.fxml"));
+        btnClick.play();
+        myGame.getMyMusic().stop();
+        myGame.setMyMusic(new PlayMusic("src/main/resources/assets/Audio/gamePlay.mp3"));
+        myGame.getMyMusic().play();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home_screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) saveBtnPauseGame.getScene().getWindow();
-        stage.setTitle("Will Hero - Game Over");
+        stage.setTitle("Will Hero - Home");
         stage.setScene(scene);
     }
 
@@ -883,6 +933,7 @@ public class GamePlayController implements Initializable {
     }
 
     public void clicked_revive_btn_game_over(ActionEvent e) throws IOException {
+        btnClick.play();
         try {
             revive();
         }
@@ -893,6 +944,7 @@ public class GamePlayController implements Initializable {
             myAlert.setContentText("Good luck... try next time!");
             try {
                 ButtonType b = myAlert.showAndWait().get();
+                btnClick.play();
             }catch (NoSuchElementException eee){}
             finally {
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_result.fxml"));
@@ -905,6 +957,7 @@ public class GamePlayController implements Initializable {
     }
 
     public void clicked_skip_btn_game_over(ActionEvent e) throws IOException {
+        btnClick.play();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_result.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) reviveBtnGameOver.getScene().getWindow();

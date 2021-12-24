@@ -26,6 +26,7 @@ public class GameMain {
     private Player currPlayer = null;
     private Scene myScene = null;
     private int doneTill = 4;
+    private PlayMusic myMusic = null;
 
     private static GameMain myGame = null;
     public static GameMain getInstance(){
@@ -69,6 +70,14 @@ public class GameMain {
     }
     public int getDoneTill() {
         return doneTill;
+    }
+
+    public void setMyMusic(PlayMusic myMusic) {
+        this.myMusic = myMusic;
+    }
+
+    public PlayMusic getMyMusic() {
+        return myMusic;
     }
 
     public void changeDoneTill() {
