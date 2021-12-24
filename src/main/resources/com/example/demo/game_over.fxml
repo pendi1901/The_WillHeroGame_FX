@@ -17,16 +17,11 @@
          </image>
       </ImageView>
       <BorderPane layoutX="147.0" layoutY="35.0" prefHeight="169.0" prefWidth="382.0" style="-fx-border-color: #00dffe #00dffe; -fx-border-width: 5px;" />
-      <Label layoutX="302.0" layoutY="302.0" prefHeight="33.0" prefWidth="99.0" text="100 Coins" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="210.0" layoutY="292.0" prefHeight="76.0" prefWidth="99.0" text="Revive 100 Coins" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Berlin Sans FB" size="25.0" />
+            <Font name="Berlin Sans FB" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="27.0" fitWidth="31.0" layoutX="409.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/Images/coin.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="heroHome" fitHeight="52.0" fitWidth="65.0" layoutX="58.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/Images/hero.png" />
@@ -47,11 +42,28 @@
             <Image url="@../../../assets/Images/red_orc.png" />
          </image>
       </ImageView>
-      <Button fx:id="reviveBtnGameOver" alignment="CENTER" contentDisplay="CENTER" layoutX="312.0" layoutY="229.0" mnemonicParsing="false" onAction="#clicked_revive_btn_game_over" prefHeight="52.0" prefWidth="65.0" style="-fx-background-color: none;">
+      <Button fx:id="reviveBtnGameOver" alignment="CENTER" contentDisplay="CENTER" layoutX="218.0" layoutY="229.0" mnemonicParsing="false" onAction="#clicked_revive_btn_game_over" prefHeight="52.0" prefWidth="65.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="70.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../assets/Images/revive.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="401.0" layoutY="310.0" prefHeight="40.0" prefWidth="50.0" text="Skip" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="skipBtnGameOver" alignment="CENTER" contentDisplay="CENTER" layoutX="373.0" layoutY="229.0" mnemonicParsing="false" onAction="#clicked_skip_btn_game_over" prefHeight="52.0" prefWidth="65.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/Images/fast-forward-button.png" />
                </image>
             </ImageView>
          </graphic>

@@ -83,6 +83,8 @@ public class GameMain {
         this.doneTill = 4;
         this.currPlayer.setPoints(0);
         this.currPlayer.setCoins(0);
+        this.currPlayer.getHero().getMyHelmet().resetWeaponCnt();
+        this.currPlayer.getHero().getMyHelmet().resetSelectedIdx();
         this.getCurrPlayer().setMoveX(1);
         this.getCurrPlayer().setPrevStart(140);
 
