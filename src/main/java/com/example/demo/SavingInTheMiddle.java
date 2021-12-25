@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import java.io.*;
-// Rudimentary file delete once finished using!!!!!!!
+// Rudimentary file delete once you're done with it!!!!!!!
 public class SavingInTheMiddle {
     static class Main3 implements Serializable {
         public String name1;

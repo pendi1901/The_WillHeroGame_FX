@@ -152,6 +152,40 @@ public class GameResultController implements Initializable {
                 }
             }
         }
+        public int getcount(){
+            Node temp = head;
+            int count=0;
+            while(temp!= null){
+                count++;
+                temp =temp.next;
+            }
+            return count;
+        }
+        public float getNthno(int indno){
+            Node current = head;
+            int count = 0 ;
+            while(current != null){
+                if(count == indno){
+                    return current.data;
+                }
+                count++;
+                current = current.next;
+            }
+            return 0;
+        }
+        public String getNthname(int index){
+            Node current  = head;
+            int count =0;
+            while(current !=null){
+                if(count == index){
+                    return current.string;
+                }
+                count++;
+                current = current.next;
+            }
+            assert (false);
+            return null;
+        }
 
         public void display() {
             Node current = head;
@@ -334,7 +368,7 @@ public class GameResultController implements Initializable {
             list.sortList();
             System.out.println("sorted list");
             list.display();
-
+            System.out.println(list.getcount());
         }
 
         //Sorting algorithm with linked lists

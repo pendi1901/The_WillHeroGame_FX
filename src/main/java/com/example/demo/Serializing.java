@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import java.io.*;
-
+// Rudimentary file delete once you're done with it!!!!!!!
 public class Serializing {
     static class Main2 implements Serializable{
         public String name1;

@@ -26,7 +26,6 @@ public class GameMain {
     private ArrayList<Platform> currPlatforms = new ArrayList<>();
     private ArrayList<GameObject> currGameObj = new ArrayList<>();
     private ArrayList<Integer> objOnPlatforms = new ArrayList<>();
-//    private GameResultController.LinkedListSorter list = new GameResultController.LinkedListSorter();
     private Player currPlayer = null;
     private Scene myScene = null;
     private int doneTill = 4;
