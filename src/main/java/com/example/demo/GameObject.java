@@ -1,6 +1,8 @@
 package com.example.demo;
 
-public abstract class GameObject {
+import java.io.Serializable;
+
+public abstract class GameObject implements Serializable {
     private Inf inf;
     GameObject(){
         inf = new Inf();

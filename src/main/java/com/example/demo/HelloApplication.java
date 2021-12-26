@@ -33,7 +33,6 @@ public class HelloApplication extends Application {
         stage.setTitle("Will Hero - Home");
         stage.getIcons().add(new Image("file:///D:/My Files/ARS@IIITD/Academics/Year 2/Sem3/AP/AP Project/Will Hero/refer/Images/boss orc.png"));
         stage.setResizable(false);
-
         stage.setScene(scene);
         stage.show();
 

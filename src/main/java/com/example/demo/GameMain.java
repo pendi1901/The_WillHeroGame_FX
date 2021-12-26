@@ -1,8 +1,6 @@
 package com.example.demo;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javafx.animation.*;
@@ -17,12 +15,12 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.io.IOException;
+
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class GameMain {
+public class GameMain implements Serializable {
     private ArrayList<Platform> currPlatforms = new ArrayList<>();
     private ArrayList<GameObject> currGameObj = new ArrayList<>();
     private ArrayList<Integer> objOnPlatforms = new ArrayList<>();
@@ -113,44 +111,44 @@ public class GameMain {
 
     public void showMainMenu(){}
     public void loadGame(){
-        //Deserializing the object to
-        GameResultController.Main2 object1 = null;
-        try{
-            FileInputStream file = new FileInputStream("demo2.txt");
-            ObjectInputStream in = new ObjectInputStream(file);
-            object1 = (GameResultController.Main2) in.readObject();
-            in.close();
-            file.close();
-            System.out.println("The object has been deserialized");
-            System.out.println("name = "  + object1.name1);
-            System.out.println("score = "  + object1.score);
-            System.out.println("coins = "  + object1.coins);
-            System.out.println("weapon number =  " + object1.weaponno);
-            System.out.println("current weaponindex = " + object1.currweapon);
-            System.out.println("done till = " +object1.donetill1);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println("IO Exception is caught");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Class not found exception");
-        }
-        assert object1 != null;
-        this.doneTill =object1.donetill1 ;
-        this.currPlayer.setPoints(object1.score);
-        this.currPlayer.setCoins(0);
-        this.getCurrPlayer().setMoveX(1);
-        this.getCurrPlayer().setPrevStart(140);
-
-        this.currPlatforms = new ArrayList<>();
-        this.currGameObj = new ArrayList<>();
-//        Setting platform configurations
-        int dist_bw_platforms = 280, maxY = 240, minY = 200;
-        for (int i = 0; i < 4; i++) {
-            Platform newPlat = new Platform();
-            newPlat.setInf(40+i*dist_bw_platforms, (int)((Math.random() * (maxY - minY)) + minY), 134, 61);
-            currPlatforms.add(newPlat);
-        }
+//        //Deserializing the object to
+//        GameResultController.Main2 object1 = null;
+//        try{
+//            FileInputStream file = new FileInputStream("demo2.txt");
+//            ObjectInputStream in = new ObjectInputStream(file);
+//            object1 = (GameResultController.Main2) in.readObject();
+//            in.close();
+//            file.close();
+//            System.out.println("The object has been deserialized");
+//            System.out.println("name = "  + object1.name1);
+//            System.out.println("score = "  + object1.score);
+//            System.out.println("coins = "  + object1.coins);
+//            System.out.println("weapon number =  " + object1.weaponno);
+//            System.out.println("current weaponindex = " + object1.currweapon);
+//            System.out.println("done till = " +object1.donetill1);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            System.out.println("IO Exception is caught");
+//        } catch (ClassNotFoundException e) {
+//            System.out.println("Class not found exception");
+//        }
+//        assert object1 != null;
+//        this.doneTill =object1.donetill1 ;
+//        this.currPlayer.setPoints(object1.score);
+//        this.currPlayer.setCoins(0);
+//        this.getCurrPlayer().setMoveX(1);
+//        this.getCurrPlayer().setPrevStart(140);
+//
+//        this.currPlatforms = new ArrayList<>();
+//        this.currGameObj = new ArrayList<>();
+////        Setting platform configurations
+//        int dist_bw_platforms = 280, maxY = 240, minY = 200;
+//        for (int i = 0; i < 4; i++) {
+//            Platform newPlat = new Platform();
+//            newPlat.setInf(40+i*dist_bw_platforms, (int)((Math.random() * (maxY - minY)) + minY), 134, 61);
+//            currPlatforms.add(newPlat);
+//        }
     }
     public void showLeaderBoard(){}
     public void startGame(){}

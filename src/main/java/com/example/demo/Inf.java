@@ -1,6 +1,8 @@
 package com.example.demo;
 
-public class Inf {
+import java.io.Serializable;
+
+public class Inf implements Serializable {
     private int x;
     private int y;
     private int len;
