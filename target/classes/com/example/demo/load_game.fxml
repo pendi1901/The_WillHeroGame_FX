@@ -2,12 +2,12 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoadGameController">
     <children>
@@ -39,15 +39,74 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <ButtonBar prefHeight="40.0" prefWidth="200.0" />
-        <Button fx:id="LoadSavedGame" layoutX="197.0" layoutY="204.0" mnemonicParsing="false" onAction="#clicked_load_savegame_btn" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: none;" />
         <ImageView fitHeight="75.0" fitWidth="300.0" layoutX="195.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../assets/Images/SavedGamesdata.png" />
             </image>
         </ImageView>
-        <Label fx:id="LabelSno" layoutX="209.0" layoutY="209.0" text="Label" />
-        <Label fx:id="LabelName" layoutX="328.0" layoutY="209.0" text="Label" />
-        <Label fx:id="LabelScore" layoutX="438.0" layoutY="209.0" text="Label" />
+        <Button fx:id="load_game_btn_1" layoutX="197.0" layoutY="190.0" mnemonicParsing="false" onAction="#clicked_load_game_btn_1" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: white;" textFill="WHITE">
+            <graphic>
+                <Label fx:id="sc1" prefHeight="17.0" prefWidth="269.0">
+                    <graphic>
+                        <Label fx:id="n1" prefHeight="17.0" prefWidth="219.0">
+                            <graphic>
+                                <Label fx:id="sn1" prefHeight="17.0" prefWidth="85.0" />
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                    </graphic>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+            </graphic></Button>
+        <Button fx:id="load_game_btn_2" ellipsisString="" layoutX="197.0" layoutY="224.0" mnemonicParsing="false" onAction="#clicked_load_game_btn_2" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: white;" textAlignment="CENTER">
+            <graphic>
+                <Label fx:id="sc2" prefHeight="17.0" prefWidth="269.0">
+                    <graphic>
+                        <Label fx:id="n2" prefHeight="17.0" prefWidth="219.0">
+                            <graphic>
+                                <Label fx:id="sn2" prefHeight="17.0" prefWidth="85.0" />
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                    </graphic>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+            </graphic>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+        </Button>
+        <Button fx:id="load_game_btn_3" layoutX="197.0" layoutY="260.0" mnemonicParsing="false" onAction="#clicked_load_game_btn_3" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: white;" textFill="WHITE">
+            <graphic>
+                <Label fx:id="sc3" prefHeight="17.0" prefWidth="269.0">
+                    <graphic>
+                        <Label fx:id="n3" prefHeight="17.0" prefWidth="219.0">
+                            <graphic>
+                                <Label fx:id="sn3" prefHeight="17.0" prefWidth="85.0" />
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                    </graphic>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+            </graphic>
+        </Button>
+      <Label fx:id="noDisplayTxt" alignment="CENTER" graphicTextGap="0.0" layoutX="229.0" layoutY="207.0" lineSpacing="4.0" prefHeight="82.0" prefWidth="250.0" style="-fx-label-padding: 4px 10px;" text="No games saved yet!" textAlignment="CENTER" textFill="#454545" wrapText="true">
+         <font>
+            <Font name="Verdana Bold" size="15.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

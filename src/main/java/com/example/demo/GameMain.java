@@ -21,13 +21,13 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class GameMain implements Serializable {
-    private ArrayList<Platform> currPlatforms = new ArrayList<>();
-    private ArrayList<GameObject> currGameObj = new ArrayList<>();
-    private ArrayList<Integer> objOnPlatforms = new ArrayList<>();
+    private transient ArrayList<Platform> currPlatforms = new ArrayList<>();
+    private transient ArrayList<GameObject> currGameObj = new ArrayList<>();
+    private transient ArrayList<Integer> objOnPlatforms = new ArrayList<>();
     private Player currPlayer = null;
-    private Scene myScene = null;
+    private transient Scene myScene = null;
     private int doneTill = 4;
-    private PlayMusic myMusic = null;
+    private transient PlayMusic myMusic = null;
 
     private static GameMain myGame = null;
     public static GameMain getInstance(){
@@ -91,6 +91,9 @@ public class GameMain implements Serializable {
 
     public void newGame(){
         this.doneTill = 4;
+        if(this.currPlayer==null){
+            this.currPlayer = new Player("Tom");
+        }
         this.currPlayer.setPoints(0);
         this.currPlayer.setCoins(0);
         this.currPlayer.getHero().getMyHelmet().resetWeaponCnt();
@@ -110,46 +113,39 @@ public class GameMain implements Serializable {
     }
 
     public void showMainMenu(){}
-    public void loadGame(){
-//        //Deserializing the object to
-//        GameResultController.Main2 object1 = null;
-//        try{
-//            FileInputStream file = new FileInputStream("demo2.txt");
-//            ObjectInputStream in = new ObjectInputStream(file);
-//            object1 = (GameResultController.Main2) in.readObject();
-//            in.close();
-//            file.close();
-//            System.out.println("The object has been deserialized");
-//            System.out.println("name = "  + object1.name1);
-//            System.out.println("score = "  + object1.score);
-//            System.out.println("coins = "  + object1.coins);
-//            System.out.println("weapon number =  " + object1.weaponno);
-//            System.out.println("current weaponindex = " + object1.currweapon);
-//            System.out.println("done till = " +object1.donetill1);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            System.out.println("IO Exception is caught");
-//        } catch (ClassNotFoundException e) {
-//            System.out.println("Class not found exception");
-//        }
-//        assert object1 != null;
-//        this.doneTill =object1.donetill1 ;
-//        this.currPlayer.setPoints(object1.score);
-//        this.currPlayer.setCoins(0);
-//        this.getCurrPlayer().setMoveX(1);
-//        this.getCurrPlayer().setPrevStart(140);
-//
-//        this.currPlatforms = new ArrayList<>();
-//        this.currGameObj = new ArrayList<>();
-////        Setting platform configurations
-//        int dist_bw_platforms = 280, maxY = 240, minY = 200;
-//        for (int i = 0; i < 4; i++) {
-//            Platform newPlat = new Platform();
-//            newPlat.setInf(40+i*dist_bw_platforms, (int)((Math.random() * (maxY - minY)) + minY), 134, 61);
-//            currPlatforms.add(newPlat);
-//        }
+
+    public void loadGame(GameMain g){
+        if(g==null){
+            System.out.println("not ok load game");
+            this.newGame();
+        }
+        else {
+            this.doneTill = g.getDoneTill();
+            if(this.currPlayer==null){
+                this.currPlayer = new Player(g.getCurrPlayer().getName());
+            }
+            else {
+                this.currPlayer.setName(g.getCurrPlayer().getName());
+            }
+            this.currPlayer.setPoints(g.getCurrPlayer().getPoints());
+            this.currPlayer.setCoins(g.getCurrPlayer().getCoins());
+            this.currPlayer.getHero().getMyHelmet().setWeaponCntTo(g.getCurrPlayer().getHero().getMyHelmet().getWeaponCnt());
+            this.currPlayer.getHero().getMyHelmet().setSelectedIdxTo(g.getCurrPlayer().getHero().getMyHelmet().getSelectedIdx());
+            this.getCurrPlayer().setMoveX(1);
+            this.getCurrPlayer().setPrevStart(140);
+
+            this.currPlatforms = new ArrayList<>();
+            this.currGameObj = new ArrayList<>();
+//        Setting platform configurations
+            int dist_bw_platforms = 280, maxY = 240, minY = 200;
+            for (int i = 0; i < 4; i++) {
+                Platform newPlat = new Platform();
+                newPlat.setInf(40 + i * dist_bw_platforms, (int) ((Math.random() * (maxY - minY)) + minY), 134, 61);
+                currPlatforms.add(newPlat);
+            }
+        }
     }
+
     public void showLeaderBoard(){}
     public void startGame(){}
     public void resumeGame(){}

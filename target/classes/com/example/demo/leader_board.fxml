@@ -49,7 +49,7 @@
       </ImageView>
       <Label fx:id="LblName1" alignment="CENTER" graphicTextGap="0.0" layoutX="252.0" layoutY="179.0" prefWidth="150.0" style="-fx-background-color: white; -fx-label-padding: 4px 10px;" text="NA" textAlignment="CENTER" textFill="#282828">
          <font>
-            <Font name="Verdana" size="11.0" />
+            <Font name="Verdana Bold" size="11.0" />
          </font></Label>
       <Label fx:id="LblScore1" alignment="CENTER" layoutX="452.0" layoutY="179.0" prefWidth="42.0" style="-fx-background-color: white; -fx-label-padding: 4px 10px;" text="0" textAlignment="CENTER" textFill="#282828">
          <font>

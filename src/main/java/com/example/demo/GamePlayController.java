@@ -125,6 +125,7 @@ public class GamePlayController implements Initializable {
 
     public void game_over() throws IOException {
         gameOverSound.play();
+        timeline.stop();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_over.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) heroGamePlay.getScene().getWindow();
@@ -863,6 +864,7 @@ public class GamePlayController implements Initializable {
 
     public void clicked_pause_btn_game_play(ActionEvent e) throws IOException {
         btnClick.play();
+        timeline.stop();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("game_pause.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) pauseBtnGamePlay.getScene().getWindow();
@@ -873,6 +875,7 @@ public class GamePlayController implements Initializable {
     //    ---------------------------------------- Pause Game ------------------------------------------
     public void clicked_close_btn_pause_game(ActionEvent e) throws IOException {
         btnClick.play();
+        timeline.stop();
         Alert myAlert = new Alert(Alert.AlertType.CONFIRMATION);
         myAlert.setTitle("Confirmation Prompt");
         myAlert.setHeaderText("Are you sure, you want to exit this current game?");
@@ -901,15 +904,17 @@ public class GamePlayController implements Initializable {
         stage.setScene(scene);
     }
 
-    //  To be changed
     @FXML
     Button saveBtnPauseGame;
     public void clicked_save_btn_pause_game(ActionEvent e) throws IOException {
         btnClick.play();
-        myGame.getMyMusic().stop();
-        myGame.setMyMusic(new PlayMusic("src/main/resources/assets/Audio/gamePlay.mp3"));
-        myGame.getMyMusic().play();
-
+        timeline.stop();
+        if(myGame.getMyMusic()!=null) {
+            myGame.getMyMusic().stop();
+            myGame.setMyMusic(new PlayMusic("src/main/resources/assets/Audio/gamePlay.mp3"));
+            myGame.getMyMusic().play();
+        }
+        SaveGame.serialize();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home_screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 680, 380);
         Stage stage = (Stage) saveBtnPauseGame.getScene().getWindow();

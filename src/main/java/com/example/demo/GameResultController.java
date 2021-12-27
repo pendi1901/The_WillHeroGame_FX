@@ -183,30 +183,9 @@ public class GameResultController implements Initializable {
             scaleHomeBtnGameResult.setAutoReverse(true);
             scaleHomeBtnGameResult.play();
         }
-//        Serialize/Deserialize
-//        {
-//            Main2 obj = new Main2(null, 0, 0, 0, 0, 0);
-//            String name = myGame.getCurrPlayer().getName();
-//            int a = myGame.getCurrPlayer().getCoins();
-//            float b = (myGame.getCurrPlayer().getPoints());
-//            int c = myGame.getCurrPlayer().getHero().getMyHelmet().getWeaponCnt();
-//            int d = myGame.getCurrPlayer().getHero().getMyHelmet().getSelectedIdx();
-//            int e = myGame.getDoneTill();
-//            obj.setCoins(a);
-//            obj.setScore(b);
-//            obj.setName1(name);
-//            obj.setWeaponno(c);
-//            obj.setCurrweapon(d);
-//            obj.setDonetill1(e);
-//            serializing(obj);
-//            deserializing();
-
-//            Main serialize_obj = new Main(myGame.getCurrPlayer().getPoints() , myGame.getCurrPlayer().getName());
-//            serializing1(serialize_obj);
-//            deserializing1();
-//        }
 //        Add to Leaderboard
         {
+            LinkedListSorter.getInstance();
             LinkedListSorter.addNode((int)(myGame.getCurrPlayer().getPoints()), myGame.getCurrPlayer().getName());
             LinkedListSorter.sortList();
             LinkedListSorter.serialize();

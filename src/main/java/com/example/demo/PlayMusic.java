@@ -1,9 +1,11 @@
 package com.example.demo;
 import java.io.File;
+import java.io.Serializable;
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-public class PlayMusic {
+public class PlayMusic implements Serializable {
     private String song;
     private Media hit;
     MediaPlayer mediaPlayer;

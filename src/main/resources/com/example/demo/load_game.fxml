@@ -2,21 +2,21 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="380.0" prefWidth="680.0" style="-fx-background-color: #00dffe #00dffe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoadGameController">
     <children>
-      <ImageView fitHeight="106.0" fitWidth="198.0" layoutX="254.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/Images/saved_games.png" />
-         </image>
-      </ImageView>
-      <BorderPane layoutX="251.0" layoutY="19.0" prefHeight="117.0" prefWidth="187.0" style="-fx-border-color: white; -fx-border-width: 5px;" />
+        <ImageView fitHeight="106.0" fitWidth="198.0" layoutX="254.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/saved_games.png" />
+            </image>
+        </ImageView>
+        <BorderPane layoutX="251.0" layoutY="19.0" prefHeight="117.0" prefWidth="187.0" style="-fx-border-color: white; -fx-border-width: 5px;" />
         <ImageView fitHeight="118.0" fitWidth="163.0" layoutX="46.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../assets/Images/cloud.png" />
@@ -27,28 +27,86 @@
                 <Image url="@../../../assets/Images/cloud.png" />
             </image>
         </ImageView>
-        <TableView layoutX="135.0" layoutY="143.0" prefHeight="200.0" prefWidth="417.0" style="-fx-background-color: #00dffe #00dffe;">
-            <columns>
-                <TableColumn editable="false" minWidth="1.0" prefWidth="76.0" sortable="false" text="S. No." />
-                <TableColumn editable="false" prefWidth="127.33332824707031" sortable="false" text="Name" />
-                <TableColumn editable="false" prefWidth="52.66668701171875" sortable="false" text="Score" />
-            <TableColumn prefWidth="155.33328247070312" text="Load Game" />
-            </columns>
-            <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-            </columnResizePolicy>
-        </TableView>
-      <Button fx:id="closeBtnLoadGame" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="316.0" mnemonicParsing="false" onAction="#clicked_close_btn_load_game" prefHeight="46.0" prefWidth="37.0" style="-fx-background-color: none;">
-         <graphic>
-            <ImageView fitHeight="46.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../assets/Images/close.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
+        <Button fx:id="closeBtnLoadGame" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="316.0" mnemonicParsing="false" onAction="#clicked_close_btn_load_game" prefHeight="46.0" prefWidth="37.0" style="-fx-background-color: none;">
+            <graphic>
+                <ImageView fitHeight="46.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../assets/Images/close.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <ImageView fitHeight="75.0" fitWidth="300.0" layoutX="195.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/Images/SavedGamesdata.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="load_game_btn_1" layoutX="197.0" layoutY="190.0" mnemonicParsing="false" onAction="#clicked_load_game_btn_1" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: white;" textFill="WHITE">
+            <graphic>
+                <Label fx:id="sc1" prefHeight="17.0" prefWidth="269.0">
+                    <graphic>
+                        <Label fx:id="n1" prefHeight="17.0" prefWidth="219.0">
+                            <graphic>
+                                <Label fx:id="sn1" prefHeight="17.0" prefWidth="85.0" />
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                    </graphic>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+            </graphic></Button>
+        <Button fx:id="load_game_btn_2" ellipsisString="" layoutX="197.0" layoutY="224.0" mnemonicParsing="false" onAction="#clicked_load_game_btn_2" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: white;" textAlignment="CENTER">
+            <graphic>
+                <Label fx:id="sc2" prefHeight="17.0" prefWidth="269.0">
+                    <graphic>
+                        <Label fx:id="n2" prefHeight="17.0" prefWidth="219.0">
+                            <graphic>
+                                <Label fx:id="sn2" prefHeight="17.0" prefWidth="85.0" />
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                    </graphic>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+            </graphic>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+        </Button>
+        <Button fx:id="load_game_btn_3" layoutX="197.0" layoutY="260.0" mnemonicParsing="false" onAction="#clicked_load_game_btn_3" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: white;" textFill="WHITE">
+            <graphic>
+                <Label fx:id="sc3" prefHeight="17.0" prefWidth="269.0">
+                    <graphic>
+                        <Label fx:id="n3" prefHeight="17.0" prefWidth="219.0">
+                            <graphic>
+                                <Label fx:id="sn3" prefHeight="17.0" prefWidth="85.0" />
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                    </graphic>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+            </graphic>
+        </Button>
+      <Label fx:id="noDisplayTxt" alignment="CENTER" graphicTextGap="0.0" layoutX="229.0" layoutY="207.0" lineSpacing="4.0" prefHeight="82.0" prefWidth="250.0" style="-fx-label-padding: 4px 10px;" text="No games saved yet!" textAlignment="CENTER" textFill="#454545" wrapText="true">
+         <font>
+            <Font name="Verdana Bold" size="15.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

@@ -31,8 +31,15 @@ public class Helmet extends GameObject{
         this.selectedIdx = (this.selectedIdx==-1 ? (Math.random()<0.5? 0:1) : 1-this.selectedIdx);
     }
 
+    public void setSelectedIdxTo(int to) {
+        this.selectedIdx = to;
+    }
+
     public void setWeaponCnt() {
         this.weaponCnt += 1;
+    }
+    public void setWeaponCntTo(int to) {
+        this.weaponCnt = to;
     }
 
     public void resetWeaponCnt() {
