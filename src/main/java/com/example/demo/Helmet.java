@@ -51,11 +51,12 @@ public class Helmet extends GameObject{
 
     @Override
     public void display() {
-
+        System.out.println(this.getWeaponCnt());
     }
 
     @Override
     public void hide() {
-
+        this.display();
+        this.resetWeaponCnt();
     }
 }

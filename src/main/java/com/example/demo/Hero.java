@@ -10,10 +10,11 @@ public class Hero extends GameObject{
     }
     @Override
     public void display() {
-
+        System.out.println(this.getMyHelmet().getAllWeapons());
     }
     @Override
     public void hide() {
-
+        this.display();
+        this.getMyHelmet().resetWeaponCnt();
     }
 }

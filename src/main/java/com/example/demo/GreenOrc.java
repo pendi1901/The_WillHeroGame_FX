@@ -6,11 +6,12 @@ public class GreenOrc extends Orc{
     }
     @Override
     public void display() {
-
+        this.push();
     }
 
     @Override
     public void hide() {
-
+        this.display();
+        this.clone();
     }
 }

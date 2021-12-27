@@ -11,11 +11,12 @@ public class WeaponChest extends Chest {
     }
     @Override
     public void display() {
-
+        System.out.println(this.getIsWeaponChest());
     }
 
     @Override
     public void hide() {
-
+        this.display();
+        System.out.println(this.getWeapon());
     }
 }

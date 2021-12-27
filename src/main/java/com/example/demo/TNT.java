@@ -7,11 +7,12 @@ public class TNT extends Obstacle{
     }
     @Override
     public void display() {
-
+        System.out.println(this.getDistAffected());
     }
 
     @Override
     public void hide() {
-
+        this.display();
+        this.setDistAffected(0);
     }
 }

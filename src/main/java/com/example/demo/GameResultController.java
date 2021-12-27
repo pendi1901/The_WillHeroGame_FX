@@ -188,7 +188,16 @@ public class GameResultController implements Initializable {
             LinkedListSorter.getInstance();
             LinkedListSorter.addNode((int)(myGame.getCurrPlayer().getPoints()), myGame.getCurrPlayer().getName());
             LinkedListSorter.sortList();
-            LinkedListSorter.serialize();
+
+            ParallelizeWork pw = new ParallelizeWork();
+            Thread t1 = new Thread(pw);
+            t1.start();
+            try {
+                t1.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         }
 
         if(pointsScoredGamePlay!=null){

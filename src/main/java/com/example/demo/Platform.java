@@ -48,13 +48,28 @@ public class Platform extends GameObject{
     public void setWhatObj(int whatObj) {
         this.whatObj = whatObj;
     }
+
+    public void fall(Orc o){
+        o.hide();
+        o.setCoins(o.getCoins());
+    }
+
+    public void fall(Player p){
+        p.hide();
+    }
+
+
     @Override
     public void display() {
-
+        myObstacle.display();
+        myOrc.display();
+        myChest.display();
     }
 
     @Override
     public void hide() {
-
+        myObstacle.hide();
+        myOrc.hide();
+        myChest.hide();
     }
 }

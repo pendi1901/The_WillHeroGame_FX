@@ -67,10 +67,11 @@ public class Player extends GameObject{
 
     @Override
     public void display() {
-
+        System.out.println(this.coinsCollected);
     }
     @Override
     public void hide() {
-
+        this.display();
+        System.out.println(this.pointsScored);
     }
 }

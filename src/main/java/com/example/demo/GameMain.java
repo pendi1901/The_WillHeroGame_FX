@@ -15,15 +15,18 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.util.Pair;
 
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class GameMain implements Serializable {
     private transient ArrayList<Platform> currPlatforms = new ArrayList<>();
     private transient ArrayList<GameObject> currGameObj = new ArrayList<>();
     private transient ArrayList<Integer> objOnPlatforms = new ArrayList<>();
+    private transient MyGenericList<Pair<String,Integer>> nameWithScores = new MyGenericList<Pair<String,Integer>>();
     private Player currPlayer = null;
     private transient Scene myScene = null;
     private int doneTill = 4;
@@ -87,6 +90,13 @@ public class GameMain implements Serializable {
 
     public void setMyScene(Scene myScene) {
         this.myScene = myScene;
+    }
+
+    public void iterateMyList(){
+        Iterator it = currGameObj.iterator();
+        while (it.hasNext()){
+            System.out.println(currGameObj);
+        }
     }
 
     public void newGame(){

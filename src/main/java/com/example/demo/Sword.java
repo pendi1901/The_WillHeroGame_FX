@@ -7,11 +7,12 @@ public class Sword extends Weapon{
 
     @Override
     public void display() {
-
+        System.out.println(this.getPowerLevel());
     }
 
     @Override
     public void hide() {
-
+        this.display();
+        System.out.println(this.getDistanceTravel());
     }
 }

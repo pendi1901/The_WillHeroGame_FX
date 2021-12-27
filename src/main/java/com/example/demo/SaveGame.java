@@ -43,6 +43,9 @@ public class SaveGame {
     public static GameMain deserialize(int idx, boolean del){
         try{
             File f = new File("src/main/resources/saves/game"+idx+".txt");
+            if(f.exists()==false){
+                throw new NoSaveFoundException("No saved game exists");
+            }
             FileInputStream file = new FileInputStream("src/main/resources/saves/game"+idx+".txt");
             ObjectInputStream in = new ObjectInputStream(file);
             GameMain temp = (GameMain) in.readObject();
@@ -53,6 +56,9 @@ public class SaveGame {
             }
             return temp;
         }
+        catch (NoSaveFoundException e) {
+//            System.out.println("No Save Found Exception is caught!");
+        }
         catch (FileNotFoundException e) {
 //            System.out.println("File Not Found Exception is caught!");
         }
@@ -61,6 +67,9 @@ public class SaveGame {
         }
         catch (ClassNotFoundException e) {
 //            System.out.println("Class Not Found Exception is caught!");
+        }
+        catch (ClassCastException e){
+//            System.out.println("Class Cast Exception is caught!");
         }
 //        System.out.println("not ok deserialize");
         return null;

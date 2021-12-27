@@ -3,7 +3,7 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class CoinChest extends Chest{
+public class CoinChest extends Chest implements Cloneable{
     private int coins;
 
     CoinChest(){
@@ -19,12 +19,25 @@ public class CoinChest extends Chest{
     }
 
     @Override
-    public void display() {
+    public CoinChest clone(){
+        try {
+            CoinChest copy = (CoinChest) super.clone();
+            return copy;
+        }
+        catch (CloneNotSupportedException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 
+    @Override
+    public void display() {
+        System.out.println(this.getCoins());
     }
 
     @Override
     public void hide() {
-
+        this.display();
+        this.clone();
     }
 }
